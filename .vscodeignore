@@ -1,0 +1,14 @@
+.vscode
+.vscode-test
+src
+.github
+test-workspace
+
+**/tsconfig.*
+**/.eslintrc.json
+**/.prettierrc.js
+**/*.map
+**/*.ts
+
+.gitignore
+pnpm-lock.yaml

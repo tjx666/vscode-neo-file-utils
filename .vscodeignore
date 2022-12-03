@@ -3,6 +3,7 @@
 src
 .github
 test-workspace
+assets/screenshots
 
 **/tsconfig.*
 **/.eslintrc.json

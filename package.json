@@ -1,8 +1,8 @@
 {
-    "name": "awesome-vscode-extension-boilerplate",
-    "displayName": "Awesome VSCode Extension Boilerplate",
+    "name": "vscode-neo-file-utils",
+    "displayName": "Neo File Utils",
     "version": "0.0.1",
-    "description": "An awesome vscode extension boilerplate",
+    "description": "provide some file utils for vscode",
     "publisher": "YuTengjing",
     "preview": true,
     "author": {
@@ -11,18 +11,21 @@
         "email": "ytj2713151713@gmail.com"
     },
     "license": "SEE LICENSE IN LICENSE",
-    "homepage": "https://github.com/tjx666/awesome-vscode-extension-boilerplate/blob/master/README.md",
+    "homepage": "https://github.com/tjx666/vscode-neo-file-utils/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tjx666/awesome-vscode-extension-boilerplate"
+        "url": "https://github.com/tjx666/vscode-neo-file-utils"
     },
     "bugs": {
-        "url": "https://github.com/tjx666/awesome-vscode-extension-boilerplate/issues",
+        "url": "https://github.com/tjx666/vscode-neo-file-utils/issues",
         "email": "ytj2713151713@gmail.com"
     },
     "keywords": [
-        "boilerplate",
-        "template"
+        "file",
+        "utils",
+        "symbolic",
+        "symbol",
+        "link"
     ],
     "categories": [
         "Other"
@@ -36,19 +39,38 @@
         {
             "url": "https://img.shields.io/badge/PRs-welcome-brightgreen.svg",
             "description": "PRs Welcome",
-            "href": "https://github.com/tjx666/awesome-vscode-extension-boilerplate"
+            "href": "https://github.com/tjx666/vscode-neo-file-utils"
         }
     ],
     "activationEvents": [
-        "onCommand:awesome-vscode-extension-boilerplate.helloWorld"
+        "onCommand:vscode-neo-file-utils.openSymbolicLinkRealFile",
+        "onCommand:vscode-neo-file-utils.revealSymbolicLinkRealFolder"
     ],
     "contributes": {
         "commands": [
             {
-                "command": "awesome-vscode-extension-boilerplate.helloWorld",
-                "title": "Hello World"
+                "command": "vscode-neo-file-utils.openSymbolicLinkRealFile",
+                "title": "Open Symbolic Link Real File"
+            },
+            {
+                "command": "vscode-neo-file-utils.revealSymbolicLinkRealFolder",
+                "title": "Reveal Symbolic Link Real Folder"
             }
-        ]
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "vscode-neo-file-utils.openSymbolicLinkRealFile",
+                    "when": "!explorerResourceIsFolder",
+                    "group": "navigation@100"
+                },
+                {
+                    "command": "vscode-neo-file-utils.revealSymbolicLinkRealFolder",
+                    "when": "explorerResourceIsFolder",
+                    "group": "navigation@100"
+                }
+            ]
+        }
     },
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-typescript"
@@ -67,22 +89,22 @@
     },
     "devDependencies": {
         "@types/glob": "^8.0.0",
-        "@types/mocha": "^10.0.0",
+        "@types/mocha": "^10.0.1",
         "@types/node": "16.18.3",
         "@types/vscode": "^1.73.1",
-        "@typescript-eslint/eslint-plugin": "^5.43.0",
-        "@typescript-eslint/parser": "^5.43.0",
+        "@typescript-eslint/eslint-plugin": "^5.45.0",
+        "@typescript-eslint/parser": "^5.45.0",
         "@vscode/test-electron": "^2.2.0",
-        "@yutengjing/eslint-config-typescript": "^0.0.4",
+        "@yutengjing/eslint-config-typescript": "^0.0.9",
         "@yutengjing/prettier-config": "^0.0.1",
-        "esbuild": "^0.15.14",
-        "eslint": "^8.27.0",
-        "format-imports": "^3.1.2",
+        "esbuild": "^0.15.16",
+        "eslint": "^8.29.0",
+        "format-imports": "^3.1.4",
         "glob": "^8.0.3",
         "mocha": "^10.1.0",
-        "prettier": "^2.7.1",
+        "prettier": "^2.8.0",
         "rimraf": "^3.0.2",
         "typescript": "^4.9.3",
-        "vsce": "^2.14.0"
+        "vsce": "^2.15.0"
     }
 }

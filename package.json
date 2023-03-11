@@ -97,7 +97,9 @@
         "lint": "eslint src --ext ts",
         "test": "pnpm compile:test && node ./out/test/runTests.js",
         "package": "vsce package --no-dependencies",
-        "publish": "vsce publish --no-dependencies"
+        "release": "bumpp -c \"release: v%s\" package.json",
+        "publish:vs-marketplace": "vsce publish --no-dependencies",
+        "publish:open-vsx": "ovsx publish --no-dependencies"
     },
     "dependencies": {
         "chardet": "^1.5.1"
@@ -108,12 +110,15 @@
         "@types/node": "^18.15.0",
         "@types/vscode": "^1.76.0",
         "@vscode/test-electron": "^2.3.0",
+        "@vscode/vsce": "^2.18.0",
         "@yutengjing/eslint-config-typescript": "^0.2.6",
         "@yutengjing/prettier-config": "^0.0.1",
+        "bumpp": "^9.0.0",
         "esbuild": "^0.17.11",
         "eslint": "^8.36.0",
         "glob": "^9.2.1",
         "mocha": "^10.2.0",
+        "ovsx": "^0.8.0",
         "prettier": "^2.8.4",
         "rimraf": "^4.4.0",
         "typescript": "^4.9.5",

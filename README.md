@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![Version](https://vsmarketplacebadge.apphb.com/version-short/YuTengjing.vscode-neo-file-utils.svg)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-neo-file-utils) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/YuTengjing.vscode-neo-file-utils.svg)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-neo-file-utils) [![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/YuTengjing.vscode-neo-file-utils.svg)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-neo-file-utils) [![Rating Star](https://vsmarketplacebadge.apphb.com/rating-star/YuTengjing.vscode-neo-file-utils.svg)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-neo-file-utils) [![Trending Monthly](https://vsmarketplacebadge.apphb.com/trending-monthly/YuTengjing.vscode-neo-file-utils.svg)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-neo-file-utils)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/YuTengjing.neo-file-utils)](https://marketplace.visualstudio.com/items/YuTengjing.neo-file-utils/changelog) [![Installs](https://img.shields.io/visual-studio-marketplace/i/YuTengjing.neo-file-utils)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.neo-file-utils) [![Downloads](https://img.shields.io/visual-studio-marketplace/d/YuTengjing.neo-file-utils)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.neo-file-utils) [![Rating Star](https://img.shields.io/visual-studio-marketplace/stars/YuTengjing.neo-file-utils)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.neo-file-utils&ssr=false#review-details) [![Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/YuTengjing.neo-file-utils)](https://github.com/tjx666/vscode-neo-file-utils)
 
-![test](https://github.com/tjx666/vscode-neo-file-utils/actions/workflows/test.yml/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Percentage of issues still open](https://isitmaintained.com/badge/open/tjx666/vscode-neo-file-utils.svg)](http://isitmaintained.com/project/tjx666/vscode-neo-file-utils') [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![test](https://github.com/tjx666/vscode-neo-file-utils/actions/workflows/test.yml/badge.svg)](https://github.com/tjx666/vscode-neo-file-utils/actions/workflows/test.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Percentage of issues still open](https://isitmaintained.com/badge/open/tjx666/vscode-neo-file-utils.svg)](http://isitmaintained.com/project/tjx666/vscode-neo-file-utils) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 </div>
 
@@ -22,7 +22,13 @@ Just right click the explorer menu and select:
 > **Note:**
 > For now, only file and folder under node_modules will show the menu
 
-![Go to Symbolic Link Real Path](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/go-to-symbolic-link-real-path%20.gif?raw=true)
+![Go to Symbolic Link Real Path](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/go-to-symbolic-link-real-path.gif?raw=true)
+
+### Detect Text File Encoding
+
+Just open a text file and run command `Detect Text File Encoding`.
+
+![Detect Text File Encoding](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/detect-text-file-enconding.gif?raw=true)
 
 ## My extensions
 

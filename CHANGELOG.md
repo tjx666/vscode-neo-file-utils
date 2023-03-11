@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.0.5 - 2023-03-12
+
+### Changed
+
+- revert extension id to `vscode-neo-file-utils`
+
 ## 0.0.4 - 2023-03-12
 
 ### Changed

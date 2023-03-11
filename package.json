@@ -33,7 +33,7 @@
     "main": "./out/extension.js",
     "icon": "assets/logo.png",
     "engines": {
-        "vscode": "^1.73.1"
+        "vscode": "^1.76.0"
     },
     "badges": [
         {

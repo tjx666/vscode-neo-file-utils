@@ -12,14 +12,17 @@ provide some file utils for vscode.
 
 ## Features
 
-### Go to Symbolic link real path
+### Go to Symbolic Link Real Path
 
 Just right click the explorer menu and select:
 
 - Open Symbolic Link Real File
 - Reveal Symbolic Link Real Folder
 
-![Go to Symbolic link real path](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/go-to-symbolic-link-real-path%20.gif?raw=true)
+> **Note:**
+> For now, only file and folder under node_modules will show the menu
+
+![Go to Symbolic Link Real Path](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/go-to-symbolic-link-real-path%20.gif?raw=true)
 
 ## My extensions
 

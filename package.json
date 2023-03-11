@@ -42,10 +42,7 @@
             "href": "https://github.com/tjx666/vscode-neo-file-utils"
         }
     ],
-    "activationEvents": [
-        "onCommand:vscode-neo-file-utils.openSymbolicLinkRealFile",
-        "onCommand:vscode-neo-file-utils.revealSymbolicLinkRealFolder"
-    ],
+    "activationEvents": [],
     "contributes": {
         "commands": [
             {
@@ -61,12 +58,12 @@
             "explorer/context": [
                 {
                     "command": "vscode-neo-file-utils.openSymbolicLinkRealFile",
-                    "when": "!explorerResourceIsFolder",
+                    "when": "resourcePath=~/node_modules[\\/]/ && !explorerResourceIsFolder",
                     "group": "navigation@100"
                 },
                 {
                     "command": "vscode-neo-file-utils.revealSymbolicLinkRealFolder",
-                    "when": "explorerResourceIsFolder",
+                    "when": "resourcePath=~/node_modules[\\/]/ && explorerResourceIsFolder",
                     "group": "navigation@100"
                 }
             ]

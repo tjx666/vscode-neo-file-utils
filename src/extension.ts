@@ -1,36 +1,33 @@
-import fs from 'node:fs/promises';
-import vscode, { Uri } from 'vscode';
-
-async function openSymbolicLinkRealFile(uri: Uri) {
-    const realPath = await fs.realpath(uri.fsPath);
-    vscode.commands.executeCommand('vscode.open', Uri.file(realPath));
-}
-
-async function revealSymbolicLinkRealFolder(uri: Uri) {
-    const realPath = await fs.realpath(uri.fsPath);
-    vscode.commands.executeCommand('revealInExplorer', Uri.file(realPath));
-}
+import vscode from 'vscode';
 
 export function activate({ subscriptions }: vscode.ExtensionContext) {
+    const extName = 'neo-file-utils';
+
     vscode.commands.registerCommand(
-        'vscode-neo-file-utils.openSymbolicLinkRealFile',
-        (uri: Uri) => {
-            if (uri) {
-                openSymbolicLinkRealFile(uri);
-            }
+        `${extName}.openSymbolicLinkRealFile`,
+        (uri) => {
+            import('./features/openSymbolicLinkRealFile').then((mod) =>
+                mod.openSymbolicLinkRealFile(uri),
+            );
         },
         subscriptions,
     );
 
     vscode.commands.registerCommand(
-        'vscode-neo-file-utils.revealSymbolicLinkRealFolder',
-        (uri: Uri) => {
-            if (uri) {
-                revealSymbolicLinkRealFolder(uri);
-            }
+        `${extName}.revealSymbolicLinkRealFolder`,
+        (uri) => {
+            import('./features/revealSymbolicLinkRealFolder').then((mod) =>
+                mod.revealSymbolicLinkRealFolder(uri),
+            );
         },
         subscriptions,
     );
+
+    vscode.commands.registerTextEditorCommand(`${extName}.detectTextFileEncoding`, (editor) => {
+        import('./features/detectTextFileEncoding').then((mod) =>
+            mod.detectTextFileEncoding(editor),
+        );
+    });
 }
 
 // export function deactivate() {}

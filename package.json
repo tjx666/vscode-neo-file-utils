@@ -1,5 +1,5 @@
 {
-    "name": "vscode-neo-file-utils",
+    "name": "neo-file-utils",
     "displayName": "Neo File Utils",
     "version": "0.0.2",
     "description": "provide some file utils for vscode",
@@ -46,23 +46,37 @@
     "contributes": {
         "commands": [
             {
-                "command": "vscode-neo-file-utils.openSymbolicLinkRealFile",
+                "command": "neo-file-utils.openSymbolicLinkRealFile",
                 "title": "Open Symbolic Link Real File"
             },
             {
-                "command": "vscode-neo-file-utils.revealSymbolicLinkRealFolder",
+                "command": "neo-file-utils.revealSymbolicLinkRealFolder",
                 "title": "Reveal Symbolic Link Real Folder"
+            },
+            {
+                "command": "neo-file-utils.detectTextFileEncoding",
+                "title": "Detect Text File Encoding"
             }
         ],
         "menus": {
+            "commandPalette": [
+                {
+                    "command": "neo-file-utils.openSymbolicLinkRealFile",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.revealSymbolicLinkRealFolder",
+                    "when": "false"
+                }
+            ],
             "explorer/context": [
                 {
-                    "command": "vscode-neo-file-utils.openSymbolicLinkRealFile",
+                    "command": "neo-file-utils.openSymbolicLinkRealFile",
                     "when": "resourcePath=~/node_modules[\\/]/ && !explorerResourceIsFolder",
                     "group": "navigation@100"
                 },
                 {
-                    "command": "vscode-neo-file-utils.revealSymbolicLinkRealFolder",
+                    "command": "neo-file-utils.revealSymbolicLinkRealFolder",
                     "when": "resourcePath=~/node_modules[\\/]/ && explorerResourceIsFolder",
                     "group": "navigation@100"
                 }
@@ -72,6 +86,7 @@
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-typescript"
     },
+    "prettier": "@yutengjing/prettier-config",
     "scripts": {
         "vscode:prepublish": "pnpm esbuild:base --minify",
         "preinstall": "npx only-allow pnpm",
@@ -84,24 +99,24 @@
         "package": "vsce package --no-dependencies",
         "publish": "vsce publish --no-dependencies"
     },
+    "dependencies": {
+        "chardet": "^1.5.1"
+    },
     "devDependencies": {
-        "@types/glob": "^8.0.0",
+        "@types/glob": "^8.1.0",
         "@types/mocha": "^10.0.1",
-        "@types/node": "16.18.3",
-        "@types/vscode": "^1.73.1",
-        "@typescript-eslint/eslint-plugin": "^5.45.0",
-        "@typescript-eslint/parser": "^5.45.0",
-        "@vscode/test-electron": "^2.2.0",
-        "@yutengjing/eslint-config-typescript": "^0.0.9",
+        "@types/node": "^18.15.0",
+        "@types/vscode": "^1.76.0",
+        "@vscode/test-electron": "^2.3.0",
+        "@yutengjing/eslint-config-typescript": "^0.2.6",
         "@yutengjing/prettier-config": "^0.0.1",
-        "esbuild": "^0.15.16",
-        "eslint": "^8.29.0",
-        "format-imports": "^3.1.4",
-        "glob": "^8.0.3",
-        "mocha": "^10.1.0",
-        "prettier": "^2.8.0",
-        "rimraf": "^3.0.2",
-        "typescript": "^4.9.3",
+        "esbuild": "^0.17.11",
+        "eslint": "^8.36.0",
+        "glob": "^9.2.1",
+        "mocha": "^10.2.0",
+        "prettier": "^2.8.4",
+        "rimraf": "^4.4.0",
+        "typescript": "^4.9.5",
         "vsce": "^2.15.0"
     }
 }

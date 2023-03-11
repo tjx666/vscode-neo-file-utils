@@ -1,7 +1,7 @@
 {
     "name": "neo-file-utils",
     "displayName": "Neo File Utils",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "provide some file utils for vscode",
     "publisher": "YuTengjing",
     "preview": true,

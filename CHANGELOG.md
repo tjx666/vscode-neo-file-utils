@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.0.6 - 2023-03-12
+
+### Added
+
+- new command `Log File Info`
+
 ## 0.0.5 - 2023-03-12
 
 ### Changed

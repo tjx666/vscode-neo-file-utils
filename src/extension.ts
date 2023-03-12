@@ -1,5 +1,7 @@
 import vscode from 'vscode';
 
+import { logger } from './logger';
+
 export function activate({ subscriptions }: vscode.ExtensionContext) {
     const extName = 'neo-file-utils';
 
@@ -28,6 +30,12 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
             mod.detectTextFileEncoding(editor),
         );
     });
+
+    vscode.commands.registerCommand(`${extName}.logFileInfo`, (uri) => {
+        import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo(uri));
+    });
 }
 
-// export function deactivate() {}
+export function deactivate() {
+    logger.dispose();
+}

@@ -56,6 +56,10 @@
             {
                 "command": "neo-file-utils.detectTextFileEncoding",
                 "title": "Detect Text File Encoding"
+            },
+            {
+                "command": "neo-file-utils.logFileInfo",
+                "title": "Log File Info"
             }
         ],
         "menus": {
@@ -102,7 +106,12 @@
         "publish:open-vsx": "ovsx publish --no-dependencies"
     },
     "dependencies": {
-        "chardet": "^1.5.1"
+        "brotli-size": "^4.0.0",
+        "chardet": "^1.5.1",
+        "file-type": "^18.2.1",
+        "gzip-size": "^7.0.0",
+        "isbinaryfile": "^5.0.0",
+        "mrmime": "^1.0.1"
     },
     "devDependencies": {
         "@types/glob": "^8.1.0",

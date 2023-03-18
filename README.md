@@ -44,3 +44,9 @@ Just open a text file and run command `Detect Text File Encoding`.
 - [Scripting Listener](https://github.com/tjx666/scripting-listener)
 
 Check all here: [publishers/YuTengjing](https://marketplace.visualstudio.com/publishers/YuTengjing)
+
+## Thanks
+
+- [Open Folder Context Menus](https://github.com/chrisdias/vscode-opennewinstance)
+- [filesize](https://github.com/mkxml/vscode-filesize)
+- [Select Line Status Bar](https://github.com/tomoki1207/selectline-statusbar)

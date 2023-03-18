@@ -34,6 +34,14 @@ Just open a text file and run command `Detect Text File Encoding`.
 
 ![File Size and Line Count in Status Bar](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/statusbar.png?raw=true)
 
+### Open Folder Context Menus for VS Code
+
+I just migrated code from extension: [Open Folder Context Menus for VS Code](https://github.com/chrisdias/vscode-opennewinstance)
+
+### Smart Revert
+
+check [source code](https://github.com/tjx666/vscode-neo-file-utils/blob/main/src/features/smartRevert.ts#L24) for details
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)

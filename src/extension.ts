@@ -85,6 +85,10 @@ export function activate(context: vscode.ExtensionContext) {
         },
         subscriptions,
     );
+
+    registerTextEditorCommand('smartRevert', (editor) => {
+        import('./features/smartRevert').then((mod) => mod.smartRevert(editor));
+    });
 }
 
 export function deactivate() {

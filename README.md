@@ -30,6 +30,10 @@ Just open a text file and run command `Detect Text File Encoding`.
 
 ![Detect Text File Encoding](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/detect-text-file-enconding.gif?raw=true)
 
+### File Size and Line Count in Status Bar
+
+![File Size and Line Count in Status Bar](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/statusbar.png?raw=true)
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)

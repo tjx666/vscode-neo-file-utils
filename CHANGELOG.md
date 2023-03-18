@@ -1,5 +1,12 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.0.7 - 2023-03-18
+
+### Added
+
+- file size statusbar
+- line count statusbar
+
 ## 0.0.6 - 2023-03-12
 
 ### Added

@@ -44,19 +44,5 @@ export async function lineCountStatusBar(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(updateStatusBar));
     context.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(updateStatusBar));
-    context.subscriptions.push(
-        vscode.window.onDidChangeActiveTextEditor(() => console.log('onDidChangeActiveTextEditor')),
-    );
-    context.subscriptions.push(
-        vscode.window.onDidChangeTextEditorViewColumn(() =>
-            console.log('onDidChangeTextEditorViewColumn'),
-        ),
-    );
-    context.subscriptions.push(
-        vscode.window.onDidChangeTextEditorSelection(() =>
-            console.log('onDidChangeTextEditorSelection'),
-        ),
-    );
-
     updateStatusBar();
 }

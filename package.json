@@ -174,7 +174,6 @@
         "ovsx": "^0.8.0",
         "prettier": "^2.8.4",
         "rimraf": "^4.4.0",
-        "typescript": "^5.0.2",
-        "vsce": "^2.15.0"
+        "typescript": "^5.0.2"
     }
 }

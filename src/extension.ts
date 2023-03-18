@@ -1,8 +1,11 @@
 import vscode from 'vscode';
 
+import { fileSizeStatusBar } from './features/fileInfo/fileSizeStatusBar';
+import { lineCountStatusBar } from './features/fileInfo/lineCountStatusBar';
 import { logger } from './logger';
 
-export function activate({ subscriptions }: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext) {
+    const { subscriptions } = context;
     const extName = 'neo-file-utils';
 
     vscode.commands.registerCommand(
@@ -31,9 +34,12 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
         );
     });
 
-    vscode.commands.registerCommand(`${extName}.logFileInfo`, (uri) => {
-        import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo(uri));
+    vscode.commands.registerCommand(`${extName}.logFileInfo`, () => {
+        import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
     });
+
+    fileSizeStatusBar(context);
+    lineCountStatusBar(context);
 }
 
 export function deactivate() {

@@ -45,6 +45,11 @@ function getPrettySize(size: number, base: number, suffixes: string[]) {
     return `${roundedSize} ${activeSuffix}`;
 }
 
+export async function getFilePrettySize(filePath: string) {
+    const stats = await fs.stat(filePath);
+    return getPrettySize(stats.size, DECIMAL_BASE, DECIMAL_SUFFIXES);
+}
+
 export async function getFileInfo(filePath: string, options?: Options): Promise<FileInfo> {
     const defaultOptions: Required<Options> = {
         useIEC: false,

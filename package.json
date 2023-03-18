@@ -42,7 +42,9 @@
             "href": "https://github.com/tjx666/vscode-neo-file-utils"
         }
     ],
-    "activationEvents": [],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
     "contributes": {
         "commands": [
             {
@@ -71,6 +73,14 @@
                 {
                     "command": "neo-file-utils.revealSymbolicLinkRealFolder",
                     "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.detectTextFileEncoding",
+                    "when": "resourceScheme == file"
+                },
+                {
+                    "command": "neo-file-utils.logFileInfo",
+                    "when": "resourceScheme == file"
                 }
             ],
             "explorer/context": [
@@ -111,11 +121,13 @@
         "file-type": "^18.2.1",
         "gzip-size": "^7.0.0",
         "isbinaryfile": "^5.0.0",
+        "lodash-es": "^4.17.21",
         "mrmime": "^1.0.1",
         "table": "^6.8.1"
     },
     "devDependencies": {
         "@types/glob": "^8.1.0",
+        "@types/lodash-es": "^4.17.7",
         "@types/mocha": "^10.0.1",
         "@types/node": "^18.15.0",
         "@types/vscode": "^1.76.0",

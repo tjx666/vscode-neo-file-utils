@@ -15,11 +15,6 @@ function getNumberOfSelectedLines(editor: vscode.TextEditor): number {
 export async function lineCountStatusBar(context: vscode.ExtensionContext) {
     let statusBarItem: vscode.StatusBarItem | undefined;
 
-    const createStatusBar = () => {
-        statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 110);
-        return statusBarItem;
-    };
-
     const _updateStatusBar = async () => {
         const { activeTextEditor } = vscode.window;
         if (!activeTextEditor || activeTextEditor.document.uri.scheme !== 'file') {
@@ -28,7 +23,7 @@ export async function lineCountStatusBar(context: vscode.ExtensionContext) {
         }
 
         if (!statusBarItem) {
-            statusBarItem = createStatusBar();
+            statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 110);
         }
 
         const { document } = activeTextEditor;
@@ -42,7 +37,8 @@ export async function lineCountStatusBar(context: vscode.ExtensionContext) {
     };
     const updateStatusBar = throttle(_updateStatusBar, 16);
 
-    context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(updateStatusBar));
-    context.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(updateStatusBar));
+    const { subscriptions } = context;
+    vscode.window.onDidChangeActiveTextEditor(updateStatusBar, null, subscriptions);
+    vscode.window.onDidChangeTextEditorSelection(updateStatusBar, null, subscriptions);
     updateStatusBar();
 }

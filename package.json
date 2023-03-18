@@ -62,6 +62,14 @@
             {
                 "command": "neo-file-utils.logFileInfo",
                 "title": "Log File Info"
+            },
+            {
+                "command": "neo-file-utils.openNewWorkbenchHere",
+                "title": "Open New Workbench Here"
+            },
+            {
+                "command": "neo-file-utils.reopenWorkbenchHere",
+                "title": "Reopen Workbench Here"
             }
         ],
         "menus": {
@@ -81,6 +89,14 @@
                 {
                     "command": "neo-file-utils.logFileInfo",
                     "when": "resourceScheme == file"
+                },
+                {
+                    "command": "neo-file-utils.openNewWorkbenchHere",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.reopenWorkbenchHere",
+                    "when": "false"
                 }
             ],
             "explorer/context": [
@@ -93,6 +109,16 @@
                     "command": "neo-file-utils.revealSymbolicLinkRealFolder",
                     "when": "resourcePath=~/node_modules[\\/]/ && explorerResourceIsFolder",
                     "group": "navigation@100"
+                },
+                {
+                    "command": "neo-file-utils.openNewWorkbenchHere",
+                    "group": "navigation@99",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "neo-file-utils.reopenWorkbenchHere",
+                    "group": "navigation@98",
+                    "when": "explorerResourceIsFolder"
                 }
             ]
         }

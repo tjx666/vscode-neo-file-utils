@@ -29,8 +29,9 @@ export async function fileSizeStatusBar(context: vscode.ExtensionContext) {
         statusBarItem.show();
     };
 
-    context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(updateStatusBar));
-    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument(updateStatusBar));
+    const { subscriptions } = context;
+    vscode.window.onDidChangeActiveTextEditor(updateStatusBar, null, subscriptions);
+    vscode.workspace.onDidSaveTextDocument(updateStatusBar, null, subscriptions);
 
     updateStatusBar();
 }

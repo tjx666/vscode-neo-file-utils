@@ -5,41 +5,86 @@ import { lineCountStatusBar } from './features/fileInfo/lineCountStatusBar';
 import { logger } from './logger';
 
 export function activate(context: vscode.ExtensionContext) {
+    const { commands } = vscode;
     const { subscriptions } = context;
     const extName = 'neo-file-utils';
 
-    vscode.commands.registerCommand(
-        `${extName}.openSymbolicLinkRealFile`,
-        (uri) => {
-            import('./features/openSymbolicLinkRealFile').then((mod) =>
-                mod.openSymbolicLinkRealFile(uri),
-            );
-        },
-        subscriptions,
-    );
+    const registerCommand = (
+        commandName: string,
+        callback: (...args: any[]) => any,
+        thisArg?: any,
+    ) => {
+        const cmd = commands.registerCommand(`${extName}.${commandName}`, callback, thisArg);
+        context.subscriptions.push(cmd);
+        return cmd;
+    };
 
-    vscode.commands.registerCommand(
-        `${extName}.revealSymbolicLinkRealFolder`,
-        (uri) => {
-            import('./features/revealSymbolicLinkRealFolder').then((mod) =>
-                mod.revealSymbolicLinkRealFolder(uri),
-            );
-        },
-        subscriptions,
-    );
+    const registerTextEditorCommand = (
+        commandName: string,
+        callback: (
+            textEditor: vscode.TextEditor,
+            edit: vscode.TextEditorEdit,
+            ...args: any[]
+        ) => void,
+        thisArg?: any,
+    ) => {
+        const cmd = commands.registerTextEditorCommand(
+            `${extName}.${commandName}`,
+            callback,
+            thisArg,
+        );
+        context.subscriptions.push(cmd);
+        return cmd;
+    };
 
-    vscode.commands.registerTextEditorCommand(`${extName}.detectTextFileEncoding`, (editor) => {
-        import('./features/detectTextFileEncoding').then((mod) =>
-            mod.detectTextFileEncoding(editor),
+    registerCommand('openSymbolicLinkRealFile', (uri) => {
+        import('./features/openSymbolicLinkRealFile').then((mod) =>
+            mod.openSymbolicLinkRealFile(uri),
         );
     });
 
-    vscode.commands.registerCommand(`${extName}.logFileInfo`, () => {
-        import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
+    registerCommand('revealSymbolicLinkRealFolder', (uri) => {
+        import('./features/revealSymbolicLinkRealFolder').then((mod) =>
+            mod.revealSymbolicLinkRealFolder(uri),
+        );
     });
+
+    registerTextEditorCommand(
+        `detectTextFileEncoding`,
+        (editor) => {
+            import('./features/detectTextFileEncoding').then((mod) =>
+                mod.detectTextFileEncoding(editor),
+            );
+        },
+        subscriptions,
+    );
+
+    registerCommand(
+        'logFileInfo',
+        () => {
+            import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
+        },
+        subscriptions,
+    );
 
     fileSizeStatusBar(context);
     lineCountStatusBar(context);
+
+    registerCommand(
+        'openNewWorkbenchHere',
+        (uri: vscode.Uri) => {
+            commands.executeCommand('vscode.openFolder', uri, true);
+        },
+        subscriptions,
+    );
+
+    registerCommand(
+        'reopenWorkbenchHere',
+        (uri: vscode.Uri) => {
+            commands.executeCommand('vscode.openFolder', uri, false);
+        },
+        subscriptions,
+    );
 }
 
 export function deactivate() {

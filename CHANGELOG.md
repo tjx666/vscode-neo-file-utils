@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.0.8 - 2023-03-18
+
+### Fixed
+
+- remove dev logs
+
 ## 0.0.7 - 2023-03-18
 
 ### Added

@@ -1,4 +1,4 @@
-import util from 'node:util';
+import { table } from 'table';
 
 import { getFileInfo } from './getFileInfo';
 import { logger } from '../../logger';
@@ -9,11 +9,5 @@ export async function logFileInfo() {
     if (!activeFile) return;
 
     const fileInfo = await getFileInfo(activeFile.fsPath);
-    logger.log(
-        util.inspect(fileInfo, {
-            compact: false,
-            depth: Number.POSITIVE_INFINITY,
-        }),
-        true,
-    );
+    logger.log(table(Object.entries(fileInfo)), true);
 }

@@ -111,7 +111,8 @@
         "file-type": "^18.2.1",
         "gzip-size": "^7.0.0",
         "isbinaryfile": "^5.0.0",
-        "mrmime": "^1.0.1"
+        "mrmime": "^1.0.1",
+        "table": "^6.8.1"
     },
     "devDependencies": {
         "@types/glob": "^8.1.0",

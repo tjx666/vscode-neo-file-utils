@@ -3,7 +3,7 @@ import type { OutputChannel } from 'vscode';
 
 let outputChannel: OutputChannel | undefined;
 export const logger = {
-    log(message: string, active: boolean): void {
+    log(message: string, active = false): void {
         if (outputChannel === undefined) {
             outputChannel = vscode.window.createOutputChannel('Neo File Utils', 'log');
         }

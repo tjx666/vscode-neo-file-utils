@@ -42,6 +42,10 @@ I just migrated code from extension: [Open Folder Context Menus for VS Code](htt
 
 check [source code](https://github.com/tjx666/vscode-neo-file-utils/blob/main/src/features/smartRevert.ts#L24) for details
 
+### Batch Rename
+
+I just migrated code from extension: [Batch Rename](https://github.com/JannisX11/batch-rename)
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)
@@ -55,6 +59,7 @@ Check all here: [publishers/YuTengjing](https://marketplace.visualstudio.com/pub
 
 ## Thanks
 
-- [Open Folder Context Menus](https://github.com/chrisdias/vscode-opennewinstance)
 - [filesize](https://github.com/mkxml/vscode-filesize)
 - [Select Line Status Bar](https://github.com/tomoki1207/selectline-statusbar)
+- [Open Folder Context Menus](https://github.com/chrisdias/vscode-opennewinstance)
+- [Batch Rename](https://github.com/JannisX11/batch-rename)

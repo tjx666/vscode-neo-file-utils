@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.0.11 - 2023-03-20
+
+### Added
+
+- show status bar message after `Batch Rename` and `Smart Revert`
+
 ## 0.0.10 - 2023-03-20
 
 ### Added

@@ -30,6 +30,7 @@ export async function batchRename(selectedFiles: vscode.Uri[]) {
             .getText()
             .split(/[\n\r]+/)
             .filter((newName) => newName.trim() !== '');
+        let renamedCount = 0;
         if (newNames.length === selectedFiles.length) {
             for (const [index, item] of selectedItems.entries()) {
                 const newName = newNames[index];
@@ -43,7 +44,9 @@ export async function batchRename(selectedFiles: vscode.Uri[]) {
                     num++;
                 }
                 await fs.rename(item.filePath, newPath);
+                renamedCount++;
             }
+            vscode.window.setStatusBarMessage(`rename ${renamedCount} files successfully`, 3000);
         } else {
             await vscode.window.showInformationMessage(
                 "The new file names count don't match the selected files count",

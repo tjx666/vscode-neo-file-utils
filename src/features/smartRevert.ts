@@ -22,24 +22,24 @@ async function checkFileStaged(filePath: string) {
 }
 
 export async function smartRevert(editor: vscode.TextEditor) {
-    // revert modify
     if (editor.document.isDirty) {
+        vscode.window.setStatusBarMessage('revert modification', 3000);
         await vscode.commands.executeCommand('workbench.action.files.revert');
         return;
     }
 
     const filePath = editor.document.uri.fsPath;
 
-    // discard git change
     if (await checkFileGitChanged(filePath)) {
+        vscode.window.setStatusBarMessage('discard git changes', 3000);
         await execa('git', ['checkout', '--', filePath], {
             cwd: getDirectory(filePath),
         });
         return;
     }
 
-    // git unstage
     if (await checkFileStaged(filePath)) {
+        vscode.window.setStatusBarMessage('unstage git changes', 3000);
         await execa('git', ['reset', 'HEAD', filePath], {
             cwd: getDirectory(filePath),
         });

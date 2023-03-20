@@ -5,6 +5,11 @@ src
 test-workspace
 assets/screenshots
 
+out
+!out/extension.js
+meta.json
+stats.html
+
 **/tsconfig.*
 **/.eslintrc.json
 **/.prettierrc.js

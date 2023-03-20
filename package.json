@@ -147,7 +147,7 @@
         "vscode:prepublish": "pnpm esbuild:base --minify",
         "preinstall": "npx only-allow pnpm",
         "clear": "rimraf ./out",
-        "esbuild:base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+        "esbuild:base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --target=ESNext",
         "esbuild:watch": "pnpm esbuild:base --sourcemap --watch",
         "compile:test": "pnpm clear && tsc -p ./test/tsconfig.json",
         "lint": "eslint src --ext ts",

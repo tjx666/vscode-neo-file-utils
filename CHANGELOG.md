@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.0.12 - 2023-03-20
+
+### Changed
+
+- reduce extension size
+
 ## 0.0.11 - 2023-03-20
 
 ### Added

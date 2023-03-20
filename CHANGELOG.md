@@ -1,5 +1,20 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.1.0 - 2023-03-21
+
+### Added
+
+- new command `Rename Workspace...`
+
+### Changed
+
+- rename `Reopen Workbench Here` to `Reopen Workspace Here`
+- rename `Open New Workbench Here` to `Open New Workspace Here`
+
+### Changed
+
+- reduce extension size
+
 ## 0.0.12 - 2023-03-20
 
 ### Changed

@@ -1,7 +1,8 @@
 import { constants as FS_CONSTANTS } from 'node:fs';
 import fs from 'node:fs/promises';
 
-import vscode, { Uri } from 'vscode';
+import type { TextEditor } from 'vscode';
+import vscode, { Uri, Range } from 'vscode';
 
 export function pathExists(path: string) {
     return fs
@@ -24,4 +25,14 @@ export async function getActiveFile() {
     await vscode.env.clipboard.writeText(originalClipboard);
 
     return (await pathExists(activeFilePath)) ? Uri.file(activeFilePath) : undefined;
+}
+
+export async function replaceEditorWholeText(editor: TextEditor, replace: string) {
+    return editor.edit((editBuilder) => {
+        const document = editor.document;
+        const firstLine = document.lineAt(0);
+        const lastLine = document.lineAt(document.lineCount - 1);
+        const wholeTextRange = new Range(firstLine.range.start, lastLine.range.end);
+        editBuilder.replace(wholeTextRange, replace);
+    });
 }

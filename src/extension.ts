@@ -38,13 +38,13 @@ export function activate(context: vscode.ExtensionContext) {
     };
 
     registerCommand('openSymbolicLinkRealFile', (uri) => {
-        import('./features/openSymbolicLinkRealFile').then((mod) =>
+        return import('./features/openSymbolicLinkRealFile').then((mod) =>
             mod.openSymbolicLinkRealFile(uri),
         );
     });
 
     registerCommand('revealSymbolicLinkRealFolder', (uri) => {
-        import('./features/revealSymbolicLinkRealFolder').then((mod) =>
+        return import('./features/revealSymbolicLinkRealFolder').then((mod) =>
             mod.revealSymbolicLinkRealFolder(uri),
         );
     });
@@ -52,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
     registerTextEditorCommand(
         `detectTextFileEncoding`,
         (editor) => {
-            import('./features/detectTextFileEncoding').then((mod) =>
+            return import('./features/detectTextFileEncoding').then((mod) =>
                 mod.detectTextFileEncoding(editor),
             );
         },
@@ -62,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
     registerCommand(
         'logFileInfo',
         () => {
-            import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
+            return import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
         },
         subscriptions,
     );
@@ -73,7 +73,7 @@ export function activate(context: vscode.ExtensionContext) {
     registerCommand(
         'openNewWorkbenchHere',
         (uri: vscode.Uri) => {
-            commands.executeCommand('vscode.openFolder', uri, true);
+            return commands.executeCommand('vscode.openFolder', uri, true);
         },
         subscriptions,
     );
@@ -81,13 +81,17 @@ export function activate(context: vscode.ExtensionContext) {
     registerCommand(
         'reopenWorkbenchHere',
         (uri: vscode.Uri) => {
-            commands.executeCommand('vscode.openFolder', uri, false);
+            return commands.executeCommand('vscode.openFolder', uri, false);
         },
         subscriptions,
     );
 
     registerTextEditorCommand('smartRevert', (editor) => {
-        import('./features/smartRevert').then((mod) => mod.smartRevert(editor));
+        return import('./features/smartRevert').then((mod) => mod.smartRevert(editor));
+    });
+
+    registerCommand('batchRename', (_clickedFile, selectedFiles) => {
+        return import('./features/batchRename').then((mod) => mod.batchRename(selectedFiles));
     });
 }
 

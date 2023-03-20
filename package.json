@@ -64,12 +64,12 @@
                 "title": "Log File Info"
             },
             {
-                "command": "neo-file-utils.openNewWorkbenchHere",
-                "title": "Open New Workbench Here"
+                "command": "neo-file-utils.openNewWorkspaceHere",
+                "title": "Open New Workspace Here"
             },
             {
-                "command": "neo-file-utils.reopenWorkbenchHere",
-                "title": "Reopen Workbench Here"
+                "command": "neo-file-utils.reopenWorkspaceHere",
+                "title": "Reopen Workspace Here"
             },
             {
                 "command": "neo-file-utils.smartRevert",
@@ -78,6 +78,10 @@
             {
                 "command": "neo-file-utils.batchRename",
                 "title": "Batch Rename..."
+            },
+            {
+                "command": "neo-file-utils.renameWorkspace",
+                "title": "Rename Workspace..."
             }
         ],
         "menus": {
@@ -99,11 +103,11 @@
                     "when": "resourceScheme == file"
                 },
                 {
-                    "command": "neo-file-utils.openNewWorkbenchHere",
+                    "command": "neo-file-utils.openNewWorkspaceHere",
                     "when": "false"
                 },
                 {
-                    "command": "neo-file-utils.reopenWorkbenchHere",
+                    "command": "neo-file-utils.reopenWorkspaceHere",
                     "when": "false"
                 },
                 {
@@ -123,17 +127,23 @@
                     "group": "navigation@100"
                 },
                 {
-                    "command": "neo-file-utils.openNewWorkbenchHere",
-                    "group": "navigation@99",
-                    "when": "explorerResourceIsFolder"
+                    "command": "neo-file-utils.openNewWorkspaceHere",
+                    "when": "!explorerResourceIsRoot && explorerResourceIsFolder",
+                    "group": "navigation@99"
                 },
                 {
-                    "command": "neo-file-utils.reopenWorkbenchHere",
-                    "group": "navigation@98",
-                    "when": "explorerResourceIsFolder"
+                    "command": "neo-file-utils.reopenWorkspaceHere",
+                    "when": "!explorerResourceIsRoot && explorerResourceIsFolder",
+                    "group": "navigation@98"
+                },
+                {
+                    "command": "neo-file-utils.renameWorkspace",
+                    "when": "explorerResourceIsRoot",
+                    "group": "7_modification@10"
                 },
                 {
                     "command": "neo-file-utils.batchRename",
+                    "when": "!explorerResourceIsRoot",
                     "group": "7_modification@20"
                 }
             ]

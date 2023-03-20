@@ -71,7 +71,7 @@ export function activate(context: vscode.ExtensionContext) {
     lineCountStatusBar(context);
 
     registerCommand(
-        'openNewWorkbenchHere',
+        'openNewWorkspaceHere',
         (uri: vscode.Uri) => {
             return commands.executeCommand('vscode.openFolder', uri, true);
         },
@@ -79,7 +79,7 @@ export function activate(context: vscode.ExtensionContext) {
     );
 
     registerCommand(
-        'reopenWorkbenchHere',
+        'reopenWorkspaceHere',
         (uri: vscode.Uri) => {
             return commands.executeCommand('vscode.openFolder', uri, false);
         },
@@ -92,6 +92,10 @@ export function activate(context: vscode.ExtensionContext) {
 
     registerCommand('batchRename', (_clickedFile, selectedFiles) => {
         return import('./features/batchRename').then((mod) => mod.batchRename(selectedFiles));
+    });
+
+    registerCommand('renameWorkspace', (uri: vscode.Uri | undefined) => {
+        return import('./features/renameWorkspace').then((mod) => mod.renameWorkspace(uri));
     });
 }
 

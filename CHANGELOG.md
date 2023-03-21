@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 0.2.0 - 2023-03-21
+
+### Added
+
+- highlight git error file
+
 ## 0.1.0 - 2023-03-21
 
 ### Added

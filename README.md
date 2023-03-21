@@ -50,6 +50,10 @@ I just migrated code from extension: [Batch Rename](https://github.com/JannisX11
 
 ![Rename Workspace](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/rename-workspace.gif?raw=true)
 
+### Highlight Git Error File
+
+![Highlight Git Error File](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/highlight-git-error-file.png?raw=true)
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)

@@ -2,12 +2,17 @@ import vscode from 'vscode';
 
 import { fileSizeStatusBar } from './features/fileInfo/fileSizeStatusBar';
 import { lineCountStatusBar } from './features/fileInfo/lineCountStatusBar';
+import { highlightGitErrorFile } from './features/highlightGitErrorFile';
 import { logger } from './logger';
 
 export function activate(context: vscode.ExtensionContext) {
     const { commands } = vscode;
     const { subscriptions } = context;
     const extName = 'neo-file-utils';
+
+    fileSizeStatusBar(context);
+    lineCountStatusBar(context);
+    highlightGitErrorFile(context);
 
     const registerCommand = (
         commandName: string,
@@ -66,9 +71,6 @@ export function activate(context: vscode.ExtensionContext) {
         },
         subscriptions,
     );
-
-    fileSizeStatusBar(context);
-    lineCountStatusBar(context);
 
     registerCommand(
         'openNewWorkspaceHere',

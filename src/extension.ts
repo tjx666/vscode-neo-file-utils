@@ -2,17 +2,14 @@ import vscode from 'vscode';
 
 import { fileSizeStatusBar } from './features/fileInfo/fileSizeStatusBar';
 import { lineCountStatusBar } from './features/fileInfo/lineCountStatusBar';
-import { highlightGitErrorFile } from './features/highlightGitErrorFile';
 import { logger } from './logger';
 
 export function activate(context: vscode.ExtensionContext) {
     const { commands } = vscode;
-    const { subscriptions } = context;
     const extName = 'neo-file-utils';
 
     fileSizeStatusBar(context);
     lineCountStatusBar(context);
-    highlightGitErrorFile(context);
 
     const registerCommand = (
         commandName: string,
@@ -54,39 +51,23 @@ export function activate(context: vscode.ExtensionContext) {
         );
     });
 
-    registerTextEditorCommand(
-        `detectTextFileEncoding`,
-        (editor) => {
-            return import('./features/detectTextFileEncoding').then((mod) =>
-                mod.detectTextFileEncoding(editor),
-            );
-        },
-        subscriptions,
-    );
+    registerTextEditorCommand(`detectTextFileEncoding`, (editor) => {
+        return import('./features/detectTextFileEncoding').then((mod) =>
+            mod.detectTextFileEncoding(editor),
+        );
+    });
 
-    registerCommand(
-        'logFileInfo',
-        () => {
-            return import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
-        },
-        subscriptions,
-    );
+    registerCommand('logFileInfo', () => {
+        return import('./features/fileInfo/logFileInfo').then((mod) => mod.logFileInfo());
+    });
 
-    registerCommand(
-        'openNewWorkspaceHere',
-        (uri: vscode.Uri) => {
-            return commands.executeCommand('vscode.openFolder', uri, true);
-        },
-        subscriptions,
-    );
+    registerCommand('openNewWorkspaceHere', (uri: vscode.Uri) => {
+        return commands.executeCommand('vscode.openFolder', uri, true);
+    });
 
-    registerCommand(
-        'reopenWorkspaceHere',
-        (uri: vscode.Uri) => {
-            return commands.executeCommand('vscode.openFolder', uri, false);
-        },
-        subscriptions,
-    );
+    registerCommand('reopenWorkspaceHere', (uri: vscode.Uri) => {
+        return commands.executeCommand('vscode.openFolder', uri, false);
+    });
 
     registerTextEditorCommand('smartRevert', (editor) => {
         return import('./features/smartRevert').then((mod) => mod.smartRevert(editor));

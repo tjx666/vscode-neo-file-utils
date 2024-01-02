@@ -33,7 +33,7 @@
     "main": "./out/extension.js",
     "icon": "assets/logo.png",
     "engines": {
-        "vscode": "^1.77.0"
+        "vscode": "^1.85.0"
     },
     "badges": [
         {
@@ -177,7 +177,7 @@
         "lodash-es": "^4.17.21",
         "mrmime": "^2.0.0",
         "table": "^6.8.1",
-        "tempy": "^3.1.0"
+        "tempy": "3.0.0"
     },
     "devDependencies": {
         "@types/glob": "^8.1.0",

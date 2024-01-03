@@ -32,20 +32,25 @@ export async function batchRename(selectedFiles: vscode.Uri[]) {
             .filter((newName) => newName.trim() !== '');
         let renamedCount = 0;
         if (newNames.length === selectedFiles.length) {
-            for (const [index, item] of selectedItems.entries()) {
-                const newName = newNames[index];
-                let num = 1;
-                let newPath = item.basePath + newName;
-                if (newPath === item.filePath) continue;
+            await Promise.all(
+                [...selectedItems.entries()].map(async ([index, item]) => {
+                    const newName = newNames[index];
 
-                while (await pathExists(newPath)) {
-                    const ext = path.extname(item.baseName);
-                    newPath = `${item.basePath + ext.slice(0, -ext.length)}_${num}${ext}`;
-                    num++;
-                }
-                await fs.rename(item.filePath, newPath);
-                renamedCount++;
-            }
+                    let num = 1;
+                    let newPath = item.basePath + newName;
+                    if (newPath === item.filePath) return;
+
+                    // eslint-disable-next-line no-await-in-loop
+                    while (await pathExists(newPath)) {
+                        const ext = path.extname(item.baseName);
+                        newPath = `${item.basePath + ext.slice(0, -ext.length)}_${num}${ext}`;
+                        num++;
+                    }
+
+                    await fs.rename(item.filePath, newPath);
+                    renamedCount++;
+                }),
+            );
             vscode.window.setStatusBarMessage(`rename ${renamedCount} files successfully`, 3000);
         } else {
             await vscode.window.showInformationMessage(

@@ -12,9 +12,10 @@ export async function fileSizeStatusBar(context: vscode.ExtensionContext) {
         return statusBarItem;
     };
 
+    const supportedSchema = new Set(['vscode-userdata', 'file']);
     const updateStatusBar = async () => {
         const { activeTextEditor } = vscode.window;
-        if (!activeTextEditor || activeTextEditor.document.uri.scheme !== 'file') {
+        if (!activeTextEditor || !supportedSchema.has(activeTextEditor.document.uri.scheme)) {
             statusBarItem?.hide();
             return;
         }

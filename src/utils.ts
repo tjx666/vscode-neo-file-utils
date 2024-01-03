@@ -1,6 +1,7 @@
 import { constants as FS_CONSTANTS } from 'node:fs';
 import fs from 'node:fs/promises';
 
+import { execaCommand } from 'execa';
 import type { TextEditor } from 'vscode';
 import vscode, { Uri, Range } from 'vscode';
 
@@ -39,4 +40,28 @@ export async function replaceEditorWholeText(editor: TextEditor, replace: string
 
 export async function openFolderInFileExplorer(folderPath: string) {
     return vscode.env.openExternal(Uri.file(folderPath));
+}
+
+export function getWorkspaceRootPath() {
+    return vscode.workspace.workspaceFolders?.[0].uri.fsPath;
+}
+
+export async function getRepositoryInfo() {
+    const { stdout } = await execaCommand('git remote -v', {
+        cwd: getWorkspaceRootPath(),
+    });
+    const lines = stdout.split(/\r?\n/).filter((line) => line.trim().length > 0);
+    const githubRemote = lines.find((line) => line.includes('github.com'));
+    if (!githubRemote) return;
+
+    // eslint-disable-next-line regexp/no-super-linear-backtracking
+    const regexp = /git@github.com:(?<userName>.+?)\/(?<repositoryName>.+?)\.git/;
+    const match = githubRemote.match(regexp);
+    if (!match?.groups) return;
+
+    const { groups } = match;
+    return {
+        userName: groups.userName,
+        repositoryName: groups.repositoryName,
+    };
 }

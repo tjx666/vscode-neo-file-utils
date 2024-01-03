@@ -86,6 +86,14 @@
             {
                 "command": "neo-file-utils.openExtensionFolder",
                 "title": "Open Extension Folder"
+            },
+            {
+                "command": "neo-file-utils.copyGithubLink",
+                "title": "Github"
+            },
+            {
+                "command": "neo-file-utils.copyJsDelivrLink",
+                "title": "JsDelivr"
             }
         ],
         "menus": {
@@ -149,6 +157,11 @@
                     "command": "neo-file-utils.batchRename",
                     "when": "!explorerResourceIsRoot",
                     "group": "7_modification@20"
+                },
+                {
+                    "submenu": "neo-file-utils.copyLink",
+                    "when": "!explorerResourceIsFolder",
+                    "group": "6_copypath"
                 }
             ],
             "extension/context": [
@@ -156,8 +169,24 @@
                     "command": "neo-file-utils.openExtensionFolder",
                     "group": "0_install"
                 }
+            ],
+            "neo-file-utils.copyLink": [
+                {
+                    "command": "neo-file-utils.copyGithubLink",
+                    "group": "copyLink@1"
+                },
+                {
+                    "command": "neo-file-utils.copyJsDelivrLink",
+                    "group": "copyLink@2"
+                }
             ]
-        }
+        },
+        "submenus": [
+            {
+                "id": "neo-file-utils.copyLink",
+                "label": "Copy Link"
+            }
+        ]
     },
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-typescript"

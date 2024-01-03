@@ -81,11 +81,21 @@ export function activate(context: vscode.ExtensionContext) {
         return import('./features/renameWorkspace').then((mod) => mod.renameWorkspace(uri));
     });
 
-    registerCommand('openExtensionFolder', (extId: string) =>
-        import('./features/openExtensionFolder').then((mod) => {
+    registerCommand('openExtensionFolder', (extId: string) => {
+        return import('./features/openExtensionFolder').then((mod) => {
             mod.openExtensionFolder(extId);
-        }),
-    );
+        });
+    });
+
+    registerCommand('copyGithubLink', (uri: vscode.Uri) => {
+        return import('./features/copyGithubLink').then((mod) => mod.copyGithubLink(uri.fsPath));
+    });
+
+    registerCommand('copyJsDelivrLink', (uri: vscode.Uri) => {
+        return import('./features/copyJsDelivrLink').then((mod) =>
+            mod.copyJsDeliverLink(uri.fsPath),
+        );
+    });
 }
 
 export function deactivate() {

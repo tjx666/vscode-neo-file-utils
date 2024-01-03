@@ -80,6 +80,12 @@ export function activate(context: vscode.ExtensionContext) {
     registerCommand('renameWorkspace', (uri: vscode.Uri | undefined) => {
         return import('./features/renameWorkspace').then((mod) => mod.renameWorkspace(uri));
     });
+
+    registerCommand('openExtensionFolder', (extId: string) =>
+        import('./features/openExtensionFolder').then((mod) => {
+            mod.openExtensionFolder(extId);
+        }),
+    );
 }
 
 export function deactivate() {

@@ -36,3 +36,7 @@ export async function replaceEditorWholeText(editor: TextEditor, replace: string
         editBuilder.replace(wholeTextRange, replace);
     });
 }
+
+export async function openFolderInFileExplorer(folderPath: string) {
+    return vscode.env.openExternal(Uri.file(folderPath));
+}

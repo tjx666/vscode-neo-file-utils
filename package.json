@@ -82,6 +82,10 @@
             {
                 "command": "neo-file-utils.renameWorkspace",
                 "title": "Rename Workspace..."
+            },
+            {
+                "command": "neo-file-utils.openExtensionFolder",
+                "title": "Open Extension Folder"
             }
         ],
         "menus": {
@@ -145,6 +149,12 @@
                     "command": "neo-file-utils.batchRename",
                     "when": "!explorerResourceIsRoot",
                     "group": "7_modification@20"
+                }
+            ],
+            "extension/context": [
+                {
+                    "command": "neo-file-utils.openExtensionFolder",
+                    "group": "0_install"
                 }
             ]
         }

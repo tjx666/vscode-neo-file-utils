@@ -1,9 +1,12 @@
 import { constants as FS_CONSTANTS } from 'node:fs';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { execaCommand } from 'execa';
 import type { TextEditor } from 'vscode';
 import vscode, { Uri, Range } from 'vscode';
+
+import { allExtensionsFolder } from './constants';
 
 export function pathExists(path: string) {
     return fs
@@ -64,4 +67,19 @@ export async function getRepositoryInfo() {
         userName: groups.userName,
         repositoryName: groups.repositoryName,
     };
+}
+
+export async function getExtensionFolders() {
+    const fileNames = await fs.readdir(allExtensionsFolder);
+    const extensionFolders: string[] = [];
+    await Promise.all(
+        fileNames.map(async (fileName) => {
+            const extensionPath = path.resolve(allExtensionsFolder, fileName);
+            if ((await fs.stat(extensionPath)).isDirectory()) {
+                extensionFolders.push(fileName);
+            }
+        }),
+    );
+    extensionFolders.sort((a, b) => b.localeCompare(a));
+    return extensionFolders;
 }

@@ -50,6 +50,16 @@ I just migrated code from extension: [Batch Rename](https://github.com/JannisX11
 
 ![Rename Workspace](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/rename-workspace.gif?raw=true)
 
+### Open Extension Folder
+
+![Open Extension Folder](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/open-extension-folder.png?raw=true)
+
+### Copy Links
+
+Useful for refer github online image link.
+
+![Copy Links](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/copy-links.png?raw=true)
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)

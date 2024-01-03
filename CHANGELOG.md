@@ -1,5 +1,13 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 1.1.0 - 2023-01-03
+
+### Added
+
+- `Open Extension Folder` menu item in extensions view
+- Copy Github Link
+- Copy JsDelivr Link
+
 ## 1.0.0 - 2023-04-18
 
 ### Changed

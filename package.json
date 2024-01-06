@@ -125,6 +125,18 @@
                 {
                     "command": "neo-file-utils.batchRename",
                     "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.openExtensionFolder",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.copyGithubLink",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.copyJsDelivrLink",
+                    "when": "false"
                 }
             ],
             "explorer/context": [

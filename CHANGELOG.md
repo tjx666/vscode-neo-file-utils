@@ -1,5 +1,11 @@
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## 1.1.2 - 2023-01-06
+
+### Fixed
+
+- don't show useless commands in command plate
+
 ## 1.1.1 - 2023-01-03
 
 ### Fixed

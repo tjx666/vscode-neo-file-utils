@@ -28,6 +28,7 @@ interface FileInfo {
     brotliSize: number;
     prettyBrotliSize: string;
     tokenCount?: number;
+    prettyTokenCount?: string;
 }
 
 const DECIMAL_BASE = 1000;
@@ -51,6 +52,30 @@ function getPrettySize(size: number, base: number, suffixes: string[]) {
 export async function getFilePrettySize(filePath: string) {
     const stats = await fs.stat(filePath);
     return getPrettySize(stats.size, DECIMAL_BASE, DECIMAL_SUFFIXES);
+}
+
+/**
+ * Format token count with appropriate unit (k for thousands, M for millions)
+ */
+export function formatTokenCount(count: number): string {
+    if (count >= 1000000) {
+        // Format with millions (M)
+        const scaledSize = count / 1000000;
+        // Round with a decimal precision of 2 and remove trailing zeros
+        const fixedScale = Math.round(Number(`${scaledSize}e+2`));
+        const roundedSize = Number(`${fixedScale}e-2`);
+        return `${roundedSize}M`;
+    }
+    if (count >= 1000) {
+        // Format with thousands (k)
+        const scaledSize = count / 1000;
+        // Round with a decimal precision of 2 and remove trailing zeros
+        const fixedScale = Math.round(Number(`${scaledSize}e+2`));
+        const roundedSize = Number(`${fixedScale}e-2`);
+        return `${roundedSize}k`;
+    }
+    // Just return the count for numbers less than 1000
+    return count.toString();
 }
 
 export async function getFileInfo(filePath: string, options?: Options): Promise<FileInfo> {
@@ -111,6 +136,7 @@ export async function getFileInfo(filePath: string, options?: Options): Promise<
         brotliSize,
         prettyBrotliSize: getPrettySize(brotliSize, base, suffixes),
         tokenCount,
+        prettyTokenCount: tokenCount ? formatTokenCount(tokenCount) : undefined,
     };
 
     if (fileInfo.isSymbolicLink) {

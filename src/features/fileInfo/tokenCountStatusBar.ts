@@ -2,6 +2,7 @@
 import { countTokens } from 'gpt-tokenizer/encoding/o200k_base';
 import { debounce } from 'lodash-es';
 import vscode from 'vscode';
+import { formatTokenCount } from './getFileInfo';
 
 export async function tokenCountStatusBar(context: vscode.ExtensionContext) {
     let statusBarItem: vscode.StatusBarItem | undefined;
@@ -51,9 +52,12 @@ export async function tokenCountStatusBar(context: vscode.ExtensionContext) {
 
             const tokenCount = countTokens(content);
 
-            // Apply display format
+            // Apply display format with formatted token count
             const displayFormat = getDisplayFormat();
-            statusBarItem.text = displayFormat.replace('{tokenCount}', tokenCount.toString());
+            statusBarItem.text = displayFormat.replace(
+                '{tokenCount}',
+                formatTokenCount(tokenCount),
+            );
 
             statusBarItem.show();
         } catch (error) {

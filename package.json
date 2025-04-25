@@ -223,6 +223,7 @@
         "chardet": "^2.0.0",
         "execa": "^8.0.1",
         "file-type": "^18.7.0",
+        "gpt-tokenizer": "^2.9.0",
         "gzip-size": "^7.0.0",
         "isbinaryfile": "^5.0.0",
         "lodash-es": "^4.17.21",
@@ -249,5 +250,6 @@
         "prettier": "^3.1.1",
         "rimraf": "^5.0.5",
         "typescript": "^5.3.3"
-    }
+    },
+    "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f"
 }

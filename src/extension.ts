@@ -2,6 +2,7 @@ import vscode from 'vscode';
 
 import { fileSizeStatusBar } from './features/fileInfo/fileSizeStatusBar';
 import { lineCountStatusBar } from './features/fileInfo/lineCountStatusBar';
+import { tokenCountStatusBar } from './features/fileInfo/tokenCountStatusBar';
 import { logger } from './logger';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -10,6 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     fileSizeStatusBar(context);
     lineCountStatusBar(context);
+    tokenCountStatusBar(context);
 
     const registerCommand = (
         commandName: string,

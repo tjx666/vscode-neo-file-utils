@@ -6,6 +6,8 @@ import { fileTypeFromFile } from 'file-type';
 import { gzipSizeFromFile } from 'gzip-size';
 import { isBinaryFile } from 'isbinaryfile';
 import { lookup } from 'mrmime';
+// @ts-expect-error maybe we should fix tsconfig
+import { countTokens } from 'gpt-tokenizer/encoding/o200k_base';
 
 interface Options {
     useIEC?: boolean;
@@ -25,6 +27,7 @@ interface FileInfo {
     prettyGzipSize: string;
     brotliSize: number;
     prettyBrotliSize: string;
+    tokenCount?: number;
 }
 
 const DECIMAL_BASE = 1000;
@@ -69,12 +72,23 @@ export async function getFileInfo(filePath: string, options?: Options): Promise<
 
     let fileType: string | undefined;
     let mime: string | undefined;
+    let tokenCount: number | undefined;
 
-    if (await isBinaryFile(filePath)) {
+    const isBinary = await isBinaryFile(filePath);
+
+    if (isBinary) {
         const fileTypeInfo = await fileTypeFromFile(filePath);
         if (fileTypeInfo) {
             fileType = fileTypeInfo.ext;
             mime = fileTypeInfo.mime;
+        }
+    } else {
+        // 只对非二进制文件计算token
+        try {
+            const content = await fs.readFile(filePath, 'utf-8');
+            tokenCount = countTokens(content);
+        } catch (error) {
+            console.error(`Error calculating tokens for ${filePath}:`, error);
         }
     }
 
@@ -96,6 +110,7 @@ export async function getFileInfo(filePath: string, options?: Options): Promise<
         prettyGzipSize: getPrettySize(gzipSize, base, suffixes),
         brotliSize,
         prettyBrotliSize: getPrettySize(brotliSize, base, suffixes),
+        tokenCount,
     };
 
     if (fileInfo.isSymbolicLink) {

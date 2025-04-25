@@ -97,6 +97,22 @@
                 "title": "JsDelivr"
             }
         ],
+        "configuration": {
+            "title": "Neo File Utils",
+            "properties": {
+                "neo-file-utils.tokenCounter.maxFileSizeMB": {
+                    "type": "number",
+                    "default": 10,
+                    "minimum": 1,
+                    "description": "Maximum file size (in MB) for token counting in the status bar"
+                },
+                "neo-file-utils.tokenCounter.displayFormat": {
+                    "type": "string",
+                    "default": "{tokenCount} tokens",
+                    "description": "Format for displaying token count in the status bar. Use {tokenCount} as a placeholder for the actual count."
+                }
+            }
+        },
         "menus": {
             "commandPalette": [
                 {
@@ -201,7 +217,6 @@
             }
         ]
     },
-
     "prettier": "@yutengjing/prettier-config",
     "scripts": {
         "vscode:prepublish": "pnpm esbuild:base --minify",
@@ -228,7 +243,7 @@
         "lodash-es": "^4.17.21",
         "mrmime": "^2.0.1",
         "table": "^6.9.0",
-        "tempy": "3.1.0"
+        "tempy": "3.0.0"
     },
     "devDependencies": {
         "@types/glob": "^8.1.0",

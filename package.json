@@ -95,6 +95,10 @@
             {
                 "command": "neo-file-utils.copyJsDelivrLink",
                 "title": "JsDelivr"
+            },
+            {
+                "command": "neo-file-utils.installExtensionFromRemoteVsix",
+                "title": "Install Extension from Remote VSIX..."
             }
         ],
         "configuration": {

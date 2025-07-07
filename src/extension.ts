@@ -98,6 +98,12 @@ export function activate(context: vscode.ExtensionContext) {
             mod.copyJsDeliverLink(uri.fsPath),
         );
     });
+
+    registerCommand('installExtensionFromRemoteVsix', () => {
+        return import('./features/installExtensionFromRemoteVsix').then((mod) =>
+            mod.installExtensionFromRemoteVsix(),
+        );
+    });
 }
 
 export function deactivate() {

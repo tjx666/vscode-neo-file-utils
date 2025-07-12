@@ -1,8 +1,8 @@
 import { table } from 'table';
 
-import { getFileInfo } from './getFileInfo';
 import { logger } from '../../logger';
 import { getActiveFile } from '../../utils';
+import { getFileInfo } from './getFileInfo';
 
 export async function logFileInfo() {
     const activeFile = await getActiveFile();

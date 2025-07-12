@@ -104,6 +104,30 @@ export function activate(context: vscode.ExtensionContext) {
             mod.installExtensionFromRemoteVsix(),
         );
     });
+
+    registerCommand('acceptAllCurrentInFolder', (...allArgs) => {
+        return import('./features/batchMergeConflict').then((mod) =>
+            mod.acceptAllCurrentInFolder(...allArgs),
+        );
+    });
+
+    registerCommand('acceptAllIncomingInFolder', (...allArgs) => {
+        return import('./features/batchMergeConflict').then((mod) =>
+            mod.acceptAllIncomingInFolder(...allArgs),
+        );
+    });
+
+    registerCommand('acceptAllCurrentAndStageInFolder', (...allArgs) => {
+        return import('./features/batchMergeConflict').then((mod) =>
+            mod.acceptAllCurrentAndStageInFolder(...allArgs),
+        );
+    });
+
+    registerCommand('acceptAllIncomingAndStageInFolder', (...allArgs) => {
+        return import('./features/batchMergeConflict').then((mod) =>
+            mod.acceptAllIncomingAndStageInFolder(...allArgs),
+        );
+    });
 }
 
 export function deactivate() {

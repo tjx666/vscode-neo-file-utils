@@ -2,6 +2,7 @@
 import { countTokens } from 'gpt-tokenizer/encoding/o200k_base';
 import { debounce } from 'lodash-es';
 import vscode from 'vscode';
+
 import { formatTokenCount } from './getFileInfo';
 
 export async function tokenCountStatusBar(context: vscode.ExtensionContext) {
@@ -14,14 +15,18 @@ export async function tokenCountStatusBar(context: vscode.ExtensionContext) {
         return statusBarItem;
     };
 
-    // Get max file size (in MB) from configuration
+    /**
+     * Get max file size (in MB) from configuration
+     */
     const getMaxFileSize = (): number => {
         const config = vscode.workspace.getConfiguration('neo-file-utils.tokenCounter');
         const maxFileSizeMB = config.get<number>('maxFileSizeMB');
         return maxFileSizeMB! * 1024 * 1024; // Convert to bytes
     };
 
-    // Get display format from configuration
+    /**
+     * Get display format from configuration
+     */
     const getDisplayFormat = (): string => {
         const config = vscode.workspace.getConfiguration('neo-file-utils.tokenCounter');
         return config.get<string>('displayFormat')!;

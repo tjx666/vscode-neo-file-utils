@@ -99,6 +99,22 @@
             {
                 "command": "neo-file-utils.installExtensionFromRemoteVsix",
                 "title": "Install Extension from Remote VSIX..."
+            },
+            {
+                "command": "neo-file-utils.acceptAllCurrentInFolder",
+                "title": "Accept All Current in Folder"
+            },
+            {
+                "command": "neo-file-utils.acceptAllIncomingInFolder",
+                "title": "Accept All Incoming in Folder"
+            },
+            {
+                "command": "neo-file-utils.acceptAllCurrentAndStageInFolder",
+                "title": "Accept All Current and Stage in Folder"
+            },
+            {
+                "command": "neo-file-utils.acceptAllIncomingAndStageInFolder",
+                "title": "Accept All Incoming and Stage in Folder"
             }
         ],
         "configuration": {
@@ -158,6 +174,22 @@
                 {
                     "command": "neo-file-utils.copyJsDelivrLink",
                     "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllCurrentInFolder",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllIncomingInFolder",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllCurrentAndStageInFolder",
+                    "when": "false"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllIncomingAndStageInFolder",
+                    "when": "false"
                 }
             ],
             "explorer/context": [
@@ -212,6 +244,28 @@
                     "command": "neo-file-utils.copyJsDelivrLink",
                     "group": "copyLink@2"
                 }
+            ],
+            "scm/resourceFolder/context": [
+                {
+                    "command": "neo-file-utils.acceptAllCurrentInFolder",
+                    "when": "scmResourceGroup == merge",
+                    "group": "1_merge@1"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllIncomingInFolder",
+                    "when": "scmResourceGroup == merge",
+                    "group": "1_merge@2"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllCurrentAndStageInFolder",
+                    "when": "scmResourceGroup == merge",
+                    "group": "1_merge@3"
+                },
+                {
+                    "command": "neo-file-utils.acceptAllIncomingAndStageInFolder",
+                    "when": "scmResourceGroup == merge",
+                    "group": "1_merge@4"
+                }
             ]
         },
         "submenus": [
@@ -228,7 +282,7 @@
         "clear": "rimraf ./out",
         "esbuild:base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --target=ESNext",
         "esbuild:watch": "pnpm esbuild:base --sourcemap --watch",
-        "compile:test": "pnpm clear && tsc -p ./test/tsconfig.json",
+        "compile:test": "pnpm clear && tsc -p ./src/tsconfig.json && tsc -p ./test/tsconfig.json",
         "lint": "eslint src --ext ts",
         "test": "pnpm compile:test && node ./out/test/runTests.js",
         "package": "vsce package --no-dependencies",

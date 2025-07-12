@@ -3,11 +3,11 @@ import path from 'node:path';
 
 import { file as brotliSizeFromFile } from 'brotli-size';
 import { fileTypeFromFile } from 'file-type';
+// @ts-expect-error maybe we should fix tsconfig
+import { countTokens } from 'gpt-tokenizer/encoding/o200k_base';
 import { gzipSizeFromFile } from 'gzip-size';
 import { isBinaryFile } from 'isbinaryfile';
 import { lookup } from 'mrmime';
-// @ts-expect-error maybe we should fix tsconfig
-import { countTokens } from 'gpt-tokenizer/encoding/o200k_base';
 
 interface Options {
     useIEC?: boolean;
@@ -108,9 +108,9 @@ export async function getFileInfo(filePath: string, options?: Options): Promise<
             mime = fileTypeInfo.mime;
         }
     } else {
-        // 只对非二进制文件计算token
+        // 只对非二进制文件计算 token
         try {
-            const content = await fs.readFile(filePath, 'utf-8');
+            const content = await fs.readFile(filePath, 'utf8');
             tokenCount = countTokens(content);
         } catch (error) {
             console.error(`Error calculating tokens for ${filePath}:`, error);

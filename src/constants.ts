@@ -8,4 +8,4 @@ const allExtensionsFolder = isInsidersVersion
     ? `${home}/.vscode-insiders/extensions`
     : `${home}/.vscode/extensions`;
 
-export { home, allExtensionsFolder };
+export { allExtensionsFolder,home };

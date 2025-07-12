@@ -4,7 +4,7 @@ import path from 'node:path';
 
 import { execaCommand } from 'execa';
 import type { TextEditor } from 'vscode';
-import vscode, { Uri, Range } from 'vscode';
+import vscode, { Range,Uri } from 'vscode';
 
 import { allExtensionsFolder } from './constants';
 

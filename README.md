@@ -60,6 +60,33 @@ Useful for refer github online image link.
 
 ![Copy Links](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/copy-links.png?raw=true)
 
+### Install Extension from Remote VSIX
+
+Install VS Code extensions directly from the marketplace by providing the extension identifier, marketplace URL, or specific version. This feature allows you to:
+
+- Install extensions by typing `publisher.extension-name` format
+- Paste marketplace URLs directly
+- Specify exact versions using `publisher.extension-name@version` syntax
+- Choose from available versions if no version is specified
+- Download and install extensions automatically
+
+Examples:
+
+- `ms-python.python` - install latest Python extension
+- `ms-python.python@2023.12.0` - install specific version
+- `https://marketplace.visualstudio.com/items?itemName=ms-python.python` - from marketplace URL
+
+### Batch Merge Conflict Resolution
+
+Efficiently resolve merge conflicts in bulk operations with context menu integration in the Source Control view. Available operations:
+
+- **Accept All Current in Folder** - Accept your version for all conflicts in the selected folder
+- **Accept All Incoming in Folder** - Accept incoming version for all conflicts in the selected folder
+- **Accept All Current and Stage in Folder** - Accept your version and automatically stage the changes
+- **Accept All Incoming and Stage in Folder** - Accept incoming version and automatically stage the changes
+
+These commands appear in the SCM resource folder context menu when merge conflicts are detected, allowing you to resolve conflicts at the directory level instead of file-by-file.
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)

@@ -92,64 +92,35 @@ async function resolveConflictFilesWithStrategy(
 
     const gitStrategy = useOurs ? '--ours' : '--theirs';
 
-    await vscode.window.withProgress(
-        {
-            location: vscode.ProgressLocation.Notification,
-            title: `${strategy}${stageText}`,
-            cancellable: false,
-        },
-        async (progress) => {
-            progress.report({
-                message: `Processing directory: ${baseDirectory || 'workspace root'}`,
-                increment: 30,
-            });
+    try {
+        // Use directory path for git checkout command
+        const targetPath = baseDirectory ? `${baseDirectory}/` : '.';
+        const checkoutArgs = ['checkout', gitStrategy, '--', targetPath];
 
-            try {
-                // Use directory path for git checkout command
-                const targetPath = baseDirectory ? `${baseDirectory}/` : '.';
-                const checkoutArgs = ['checkout', gitStrategy, '--', targetPath];
+        logger.info(`Executing: git ${checkoutArgs.join(' ')} (cwd: ${workspaceRoot})`);
 
-                logger.info(`Executing: git ${checkoutArgs.join(' ')} (cwd: ${workspaceRoot})`);
+        await execa('git', checkoutArgs, { cwd: workspaceRoot });
 
-                await execa('git', checkoutArgs, { cwd: workspaceRoot });
+        if (shouldStage) {
+            const addArgs = ['add', '--', targetPath];
 
-                progress.report({
-                    message: 'Conflicts resolved',
-                    increment: 40,
-                });
+            logger.info(`Executing: git ${addArgs.join(' ')} (cwd: ${workspaceRoot})`);
 
-                if (shouldStage) {
-                    progress.report({
-                        message: 'Staging changes...',
-                        increment: 20,
-                    });
+            await execa('git', addArgs, { cwd: workspaceRoot });
+        }
 
-                    const addArgs = ['add', '--', targetPath];
+        const message = shouldStage
+            ? `${strategy} and staged ${conflictFiles.length} files in ${baseDirectory || 'workspace root'}`
+            : `${strategy} resolved ${conflictFiles.length} files in ${baseDirectory || 'workspace root'}`;
 
-                    logger.info(`Executing: git ${addArgs.join(' ')} (cwd: ${workspaceRoot})`);
-
-                    await execa('git', addArgs, { cwd: workspaceRoot });
-                }
-
-                progress.report({
-                    message: 'Completed successfully',
-                    increment: 10,
-                });
-
-                const message = shouldStage
-                    ? `${strategy} and staged ${conflictFiles.length} files in ${baseDirectory || 'workspace root'}`
-                    : `${strategy} resolved ${conflictFiles.length} files in ${baseDirectory || 'workspace root'}`;
-
-                vscode.window.showInformationMessage(message);
-                logger.info(`Successfully completed: ${message}`);
-            } catch (error) {
-                const errorMessage = `Failed to ${strategy.toLowerCase()}: ${error instanceof Error ? error.message : String(error)}`;
-                logger.error(errorMessage);
-                vscode.window.showErrorMessage(errorMessage);
-                throw error;
-            }
-        },
-    );
+        vscode.window.showInformationMessage(message);
+        logger.info(`Successfully completed: ${message}`);
+    } catch (error) {
+        const errorMessage = `Failed to ${strategy.toLowerCase()}: ${error instanceof Error ? error.message : String(error)}`;
+        logger.error(errorMessage);
+        vscode.window.showErrorMessage(errorMessage);
+        throw error;
+    }
 }
 
 /**

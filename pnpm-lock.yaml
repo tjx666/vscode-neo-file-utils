@@ -18,11 +18,11 @@ importers:
         specifier: ^9.5.2
         version: 9.5.2
       file-type:
-        specifier: ^20.4.1
-        version: 20.4.1
+        specifier: ^21.0.0
+        version: 21.0.0
       gpt-tokenizer:
-        specifier: ^2.9.0
-        version: 2.9.0
+        specifier: ^3.0.0
+        version: 3.0.0
       gzip-size:
         specifier: ^7.0.0
         version: 7.0.0
@@ -39,12 +39,12 @@ importers:
         specifier: ^6.9.0
         version: 6.9.0
       tempy:
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 3.1.0
+        version: 3.1.0
     devDependencies:
       '@types/glob':
-        specifier: ^8.1.0
-        version: 8.1.0
+        specifier: ^9.0.0
+        version: 9.0.0
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
@@ -52,10 +52,10 @@ importers:
         specifier: ^10.0.10
         version: 10.0.10
       '@types/node':
-        specifier: ^20.17.30
-        version: 20.17.30
+        specifier: ~22.16.3
+        version: 22.16.3
       '@types/vscode':
-        specifier: ^1.96.0
+        specifier: ^1.98.0
         version: 1.99.1
       '@vscode/test-electron':
         specifier: ^2.5.2
@@ -468,8 +468,9 @@ packages:
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
 
-  '@types/glob@8.1.0':
-    resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
+  '@types/glob@9.0.0':
+    resolution: {integrity: sha512-00UxlRaIUvYm4R4W9WYkN8/J+kV8fmOQ7okeH6YFtGWFMt3odD45tpG5yA5wnL7HE6lLgjaTW5n14ju2hl2NNA==}
+    deprecated: This is a stub types definition. glob provides its own type definitions, so you do not need this installed.
 
   '@types/http-cache-semantics@4.0.4':
     resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
@@ -489,17 +490,14 @@ packages:
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
-  '@types/minimatch@5.1.2':
-    resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
-
   '@types/mocha@10.0.10':
     resolution: {integrity: sha512-xPyYSz1cMPnJQhl0CLMH68j3gprKZaTjG3s5Vi+fDgx+uhG9NOXwbVt52eFS8ECyXhyKcjDLCBEqBExKuiZb7Q==}
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@20.17.30':
-    resolution: {integrity: sha512-7zf4YyHA+jvBNfVrk2Gtvs6x7E8V+YDW05bNfG2XkWDJfYRXrTiP/DsB2zSYTaHX0bGIujTBQdMVAhb+j7mwpg==}
+  '@types/node@22.16.3':
+    resolution: {integrity: sha512-sr4Xz74KOUeYadexo1r8imhRtlVXcs+j3XK3TcoiYk7B1t3YRVJgtaD3cwX73NYb71pmVuMLNRhJ9XKdoDB74g==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1612,9 +1610,9 @@ packages:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
 
-  file-type@20.4.1:
-    resolution: {integrity: sha512-hw9gNZXUfZ02Jo0uafWLaFVPter5/k2rfcrjFJJHX/77xtSDOfJuEFb6oKlFV86FLP1SuyHMW1PSk0U9M5tKkQ==}
-    engines: {node: '>=18'}
+  file-type@21.0.0:
+    resolution: {integrity: sha512-ek5xNX2YBYlXhiUXui3D/BXa3LdqPmoLJ7rqEx2bKJ7EAUEfmXgW0Das7Dc6Nr9MvqaOnIqiPV0mZk/r/UpNAg==}
+    engines: {node: '>=20'}
 
   fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -1765,8 +1763,8 @@ packages:
     resolution: {integrity: sha512-mThBblvlAF1d4O5oqyvN+ZxLAYwIJK7bpMxgYqPD9okW0C3qm5FFn7k811QrcuEBwaogR3ngOFoCfs6mRv7teQ==}
     engines: {node: '>=14.16'}
 
-  gpt-tokenizer@2.9.0:
-    resolution: {integrity: sha512-YSpexBL/k4bfliAzMrRqn3M6+it02LutVyhVpDeMKrC/O9+pCe/5s8U2hYKa2vFLD5/vHhsKc8sOn/qGqII8Kg==}
+  gpt-tokenizer@3.0.0:
+    resolution: {integrity: sha512-S7SWrQHkl73wpZEJjeIh9Gfx2aVHudAEadezI2/SSvqRMtQiUjjHDah4m8LWTxcw9Fx9VphNXpqdnMo3FapDFg==}
 
   graceful-fs@4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
@@ -3109,12 +3107,12 @@ packages:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
 
-  temp-dir@2.0.0:
-    resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}
-    engines: {node: '>=8'}
+  temp-dir@3.0.0:
+    resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
+    engines: {node: '>=14.16'}
 
-  tempy@3.0.0:
-    resolution: {integrity: sha512-B2I9X7+o2wOaW4r/CWMkpOO9mdiTRCxXNgob6iGvPmfPWgH/KyUD6Uy5crtWBxIBe3YrNZKR2lSzv1JJKWD4vA==}
+  tempy@3.1.0:
+    resolution: {integrity: sha512-7jDLIdD2Zp0bDe5r3D2qtkd1QOCacylBuL7oa4udvN6v2pqr4+LcCr67C8DR1zkpaZ8XosF5m1yQSabKAW6f2g==}
     engines: {node: '>=14.16'}
 
   tinyexec@0.3.2:
@@ -3220,8 +3218,8 @@ packages:
   underscore@1.13.7:
     resolution: {integrity: sha512-GMXzWtsc57XAtguZgaQViUOzs0KTkk8ojr3/xAxXLITqf/3EMwxC0inyETfDFjH/Krbhuep0HNbbjI9i/q3F3g==}
 
-  undici-types@6.19.8:
-    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   undici@6.21.2:
     resolution: {integrity: sha512-uROZWze0R0itiAKVPsYhFov9LxrPMHLMEQFszeI2gCN6bnIIZ8twzBCJcN2LJrBBLfrP0t1FW0g+JmKVl8Vk1g==}
@@ -3742,10 +3740,9 @@ snapshots:
 
   '@types/estree@1.0.7': {}
 
-  '@types/glob@8.1.0':
+  '@types/glob@9.0.0':
     dependencies:
-      '@types/minimatch': 5.1.2
-      '@types/node': 20.17.30
+      glob: 11.0.2
 
   '@types/http-cache-semantics@4.0.4': {}
 
@@ -3764,15 +3761,13 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/minimatch@5.1.2': {}
-
   '@types/mocha@10.0.10': {}
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@20.17.30':
+  '@types/node@22.16.3':
     dependencies:
-      undici-types: 6.19.8
+      undici-types: 6.21.0
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -5148,7 +5143,7 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-type@20.4.1:
+  file-type@21.0.0:
     dependencies:
       '@tokenizer/inflate': 0.2.7
       strtok3: 10.2.2
@@ -5327,7 +5322,7 @@ snapshots:
       p-cancelable: 3.0.0
       responselike: 3.0.0
 
-  gpt-tokenizer@2.9.0: {}
+  gpt-tokenizer@3.0.0: {}
 
   graceful-fs@4.2.10: {}
 
@@ -6940,12 +6935,12 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  temp-dir@2.0.0: {}
+  temp-dir@3.0.0: {}
 
-  tempy@3.0.0:
+  tempy@3.1.0:
     dependencies:
       is-stream: 3.0.0
-      temp-dir: 2.0.0
+      temp-dir: 3.0.0
       type-fest: 2.19.0
       unique-string: 3.0.0
 
@@ -7068,7 +7063,7 @@ snapshots:
 
   underscore@1.13.7: {}
 
-  undici-types@6.19.8: {}
+  undici-types@6.21.0: {}
 
   undici@6.21.2: {}
 

@@ -89,7 +89,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: false
-  
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -98,12 +98,16 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-    
 
       - name: Publish to Visual Studio Marketplace
         run: pnpm run publish:vs-marketplace
         env:
           VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+
+      - name: Publish to Open VSX Registry
+        run: pnpm run publish:open-vsx
+        env:
+          OVSX_PAT: ${{ secrets.OPEN_VSX_TOKEN }}
 
       - name: Github Release
         run: npx changelogithub

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 
-import { temporaryFile } from 'tempy';
 import vscode, { Uri } from 'vscode';
 
 import { pathExists, replaceEditorWholeText } from '../utils';
@@ -19,7 +19,7 @@ export async function batchRename(selectedFiles: vscode.Uri[]) {
     });
 
     const content = selectedItems.map((file) => file.baseName).join('\n');
-    const tempFile = temporaryFile({ name: 'Batch Rename.txt' });
+    const tempFile = path.join(os.tmpdir(), 'Batch Rename.txt');
     await fs.writeFile(tempFile, content, 'utf8');
     const document = await vscode.workspace.openTextDocument(Uri.file(tempFile));
     const editor = await vscode.window.showTextDocument(document);

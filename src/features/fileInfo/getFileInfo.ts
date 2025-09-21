@@ -9,6 +9,8 @@ import { gzipSizeFromFile } from 'gzip-size';
 import { isBinaryFile } from 'isbinaryfile';
 import { lookup } from 'mrmime';
 
+import { formatFileSize } from '../../utils/file';
+
 interface Options {
     useIEC?: boolean;
 }
@@ -31,28 +33,6 @@ interface FileInfo {
     prettyTokenCount?: string;
 }
 
-const DECIMAL_BASE = 1000;
-const IEC_BASE = 1024;
-const IEC_SUFFIXES = ['bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
-const DECIMAL_SUFFIXES = ['bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-function getPrettySize(size: number, base: number, suffixes: string[]) {
-    if (size === 0) return '0 bytes';
-    if (size === 1) return '1 byte';
-
-    const scale = Math.floor(Math.log(size) / Math.log(base));
-    const activeSuffix = suffixes[scale];
-    const scaledSize = size / base ** scale;
-    // Round size with a decimal precision of 2
-    const fixedScale = Math.round(Number(`${scaledSize}e+2`));
-    const roundedSize = Number(`${fixedScale}e-2`);
-    return `${roundedSize} ${activeSuffix}`;
-}
-
-export async function getFilePrettySize(filePath: string) {
-    const stats = await fs.stat(filePath);
-    return getPrettySize(stats.size, DECIMAL_BASE, DECIMAL_SUFFIXES);
-}
 
 /**
  * Format token count with appropriate unit (k for thousands, M for millions)
@@ -87,8 +67,10 @@ export async function getFileInfo(filePath: string, options?: Options): Promise<
         ...options,
     };
 
-    const base = options.useIEC ? IEC_BASE : DECIMAL_BASE;
-    const suffixes = options.useIEC ? IEC_SUFFIXES : DECIMAL_SUFFIXES;
+    // 选择适当的格式化函数
+    const formatSize = options.useIEC
+        ? (size: number) => formatFileSize(size, 1024, ['bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'])
+        : (size: number) => formatFileSize(size, 1000, ['bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']);
 
     const stats = await fs.stat(filePath);
     const absolutePath = path.normalize(filePath);
@@ -130,11 +112,11 @@ export async function getFileInfo(filePath: string, options?: Options): Promise<
         fileType,
         mime,
         size: stats.size,
-        prettySize: getPrettySize(stats.size, base, suffixes),
+        prettySize: formatSize(stats.size),
         gzipSize,
-        prettyGzipSize: getPrettySize(gzipSize, base, suffixes),
+        prettyGzipSize: formatSize(gzipSize),
         brotliSize,
-        prettyBrotliSize: getPrettySize(brotliSize, base, suffixes),
+        prettyBrotliSize: formatSize(brotliSize),
         tokenCount,
         prettyTokenCount: tokenCount ? formatTokenCount(tokenCount) : undefined,
     };

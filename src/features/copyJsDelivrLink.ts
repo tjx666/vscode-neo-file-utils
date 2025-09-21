@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import vscode from 'vscode';
 
-import { getRepositoryInfo, getWorkspaceRootPath } from '../utils';
+import { getRepositoryInfo, getWorkspaceRootPath } from '../utils/file';
 
 export async function copyJsDeliverLink(filePath: string) {
     const info = await getRepositoryInfo();

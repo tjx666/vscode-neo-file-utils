@@ -1,6 +1,6 @@
 import vscode from 'vscode';
 
-import { getFilePrettySize } from './getFileInfo';
+import { getFilePrettySize } from '../../utils/file';
 
 export async function fileSizeStatusBar(context: vscode.ExtensionContext) {
     let statusBarItem: vscode.StatusBarItem | undefined;

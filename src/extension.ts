@@ -89,6 +89,12 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
+    registerCommand('removeOldVersionsOfExtensions', () => {
+        return import('./features/removeOldVersionsOfExtensions').then((mod) =>
+            mod.removeOldVersionsOfExtensions(context),
+        );
+    });
+
     registerCommand('copyGithubLink', (uri: vscode.Uri) => {
         return import('./features/copyGithubLink').then((mod) => mod.copyGithubLink(uri.fsPath));
     });

@@ -12,6 +12,10 @@ export const logger = {
             outputChannel.show();
         }
     },
+    debug(message: string, ...args: any[]): void {
+        const formattedMessage = args.length > 0 ? `${message} ${JSON.stringify(args)}` : message;
+        this.log(`[DEBUG] ${formattedMessage}`);
+    },
     info(message: string, ...args: any[]): void {
         const formattedMessage = args.length > 0 ? `${message} ${JSON.stringify(args)}` : message;
         this.log(`[INFO] ${formattedMessage}`);

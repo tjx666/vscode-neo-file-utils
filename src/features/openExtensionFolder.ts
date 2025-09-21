@@ -3,7 +3,8 @@ import path from 'node:path';
 import vscode from 'vscode';
 
 import { allExtensionsFolder } from '../constants';
-import { getExtensionFolders, openFolderInFileExplorer } from '../utils';
+import { getExtensionFolders } from '../utils/file';
+import { openFolderInFileExplorer } from '../utils/vscode-api';
 
 /**
  * @param extId Like YuTengjing.better-colorizer, but extension folder name is lowercase

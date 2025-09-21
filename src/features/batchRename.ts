@@ -4,7 +4,8 @@ import path from 'node:path';
 
 import vscode, { Uri } from 'vscode';
 
-import { pathExists, replaceEditorWholeText } from '../utils';
+import { replaceEditorWholeText } from '../utils/editor';
+import { pathExists } from '../utils/file';
 
 export async function batchRename(selectedFiles: vscode.Uri[]) {
     if (!Array.isArray(selectedFiles) || selectedFiles.length === 0) return;

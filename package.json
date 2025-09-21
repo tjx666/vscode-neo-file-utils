@@ -115,6 +115,11 @@
             {
                 "command": "neo-file-utils.acceptAllIncomingAndStageInFolder",
                 "title": "Accept All Incoming and Stage in Folder"
+            },
+            {
+                "command": "neo-file-utils.removeOldVersionsOfExtensions",
+                "title": "Remove Old Versions of Extensions",
+                "category": "Neo File Utils"
             }
         ],
         "configuration": {
@@ -295,6 +300,7 @@
         "chardet": "^2.1.0",
         "execa": "^9.5.2",
         "file-type": "^21.0.0",
+        "get-folder-size": "^5.0.0",
         "gpt-tokenizer": "^3.0.0",
         "gzip-size": "^7.0.0",
         "isbinaryfile": "^5.0.4",

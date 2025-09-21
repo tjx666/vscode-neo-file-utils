@@ -3,7 +3,7 @@ import path from 'node:path';
 import { isBinaryFile } from 'isbinaryfile';
 import vscode from 'vscode';
 
-import { getRepositoryInfo, getWorkspaceRootPath } from '../utils';
+import { getRepositoryInfo, getWorkspaceRootPath } from '../utils/file';
 
 export async function copyGithubLink(filePath: string) {
     const info = await getRepositoryInfo();

@@ -1,7 +1,7 @@
 import { table } from 'table';
 
 import { logger } from '../../logger';
-import { getActiveFile } from '../../utils';
+import { getActiveFile } from '../../utils/file';
 import { getFileInfo } from './getFileInfo';
 
 export async function logFileInfo() {

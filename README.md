@@ -54,6 +54,10 @@ I just migrated code from extension: [Batch Rename](https://github.com/JannisX11
 
 ![Open Extension Folder](https://github.com/tjx666/vscode-neo-file-utils/blob/main/assets/screenshots/open-extension-folder.png?raw=true)
 
+### Remove Old Versions of Extensions
+
+Run the `Neo File Utils: Remove Old Versions of Extensions` command to preview stale extension versions, then purge everything except the latest build for each extension across VS Code, Cursor, Windsurf, and other supported hosts.
+
 ### Copy Links
 
 Useful for refer github online image link.

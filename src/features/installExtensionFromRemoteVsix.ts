@@ -8,7 +8,7 @@ import vscode from 'vscode';
 
 import { logger } from '../logger';
 
-interface ExtensionInfo {
+export interface ExtensionInfo {
     publisher: string;
     name: string;
     version: string;
@@ -26,6 +26,10 @@ interface MarketplaceResponse {
             versions: Array<{
                 version: string;
                 lastUpdated: string;
+                properties?: Array<{
+                    key: string;
+                    value: string;
+                }>;
             }>;
         }>;
     }>;
@@ -212,10 +216,16 @@ function validateUserInput(value: string): string | undefined {
 /**
  * Get extension versions from Marketplace API
  */
-async function getExtensionVersions(
+export async function getExtensionVersions(
     publisher: string,
     extensionName: string,
-): Promise<Array<{ version: string; lastUpdated: string }>> {
+): Promise<
+    Array<{
+        version: string;
+        lastUpdated: string;
+        properties?: Array<{ key: string; value: string }>;
+    }>
+> {
     const apiUrl = 'https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery';
 
     const requestBody = {
@@ -266,6 +276,7 @@ async function getExtensionVersions(
                     const versions = extension.versions.map((v: any) => ({
                         version: v.version,
                         lastUpdated: v.lastUpdated,
+                        properties: v.properties,
                     }));
 
                     logger.info(
@@ -300,7 +311,7 @@ async function getExtensionVersions(
 /**
  * Download VSIX file to temporary directory
  */
-async function downloadVsixFile(
+export async function downloadVsixFile(
     extensionInfo: ExtensionInfo,
     cancellationToken: vscode.CancellationToken,
 ): Promise<string> {
@@ -478,7 +489,7 @@ async function validateVsixFile(filePath: string): Promise<void> {
 /**
  * Install extension using VS Code API
  */
-async function installExtensionFromVsix(vsixPath: string): Promise<void> {
+export async function installExtensionFromVsix(vsixPath: string): Promise<void> {
     try {
         // Use VS Code's extension installation API
         const uri = vscode.Uri.file(vsixPath);
@@ -495,7 +506,7 @@ async function installExtensionFromVsix(vsixPath: string): Promise<void> {
 /**
  * Clean up temporary files
  */
-async function cleanupTempFile(filePath: string): Promise<void> {
+export async function cleanupTempFile(filePath: string): Promise<void> {
     try {
         await fsPromises.access(filePath);
         await fsPromises.unlink(filePath);

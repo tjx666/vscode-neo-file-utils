@@ -120,6 +120,11 @@
                 "command": "neo-file-utils.removeOldVersionsOfExtensions",
                 "title": "Remove Old Versions of Extensions",
                 "category": "Neo File Utils"
+            },
+            {
+                "command": "neo-file-utils.checkExtensionUpdates",
+                "title": "Check Extension Updates",
+                "category": "Neo File Utils"
             }
         ],
         "configuration": {

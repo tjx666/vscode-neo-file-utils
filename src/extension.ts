@@ -134,6 +134,12 @@ export function activate(context: vscode.ExtensionContext) {
             mod.acceptAllIncomingAndStageInFolder(...allArgs),
         );
     });
+
+    registerCommand('checkExtensionUpdates', () => {
+        return import('./features/checkExtensionUpdates').then((mod) =>
+            mod.checkExtensionUpdates(),
+        );
+    });
 }
 
 export function deactivate() {

@@ -340,7 +340,7 @@ export async function checkExtensionUpdates(): Promise<void> {
                 .join('\n\n');
             const moreText = incompatibleUpdates.length > 5 ? `\n\n...and ${incompatibleUpdates.length - 5} more` : '';
 
-            vscode.window.showWarningMessage(
+            await vscode.window.showWarningMessage(
                 `${incompatibleUpdates.length} extension update(s) require a newer VSCode version`,
                 {
                     modal: true,
